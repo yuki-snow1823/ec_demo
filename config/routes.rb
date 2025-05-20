@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   devise_for :users
+=======
+  get "home/index"
+
+  namespace :admin do
+    devise_for :users, path: 'users', module: 'admin/users', controllers: {
+      registrations: 'admin/users/registrations',
+      sessions: 'admin/users/sessions'
+    }
+  end
+
+>>>>>>> 7ed5089 (HomeController#indexの追加し、shared（error_messages・links）のパスを修正)
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
