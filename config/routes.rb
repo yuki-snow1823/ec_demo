@@ -1,12 +1,8 @@
 Rails.application.routes.draw do
-  get "home/index"
-
-  namespace :admin do
-    devise_for :users, path: "users", module: "admin/users", controllers: {
-      registrations: "admin/users/registrations",
-      sessions: "admin/users/sessions"
-    }
-  end
+  devise_for :users, path: 'admin/users', module: 'admin/users', controllers: {
+    sessions: 'admin/users/sessions',
+    registrations: 'admin/users/registrations'
+  }
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
