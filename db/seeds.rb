@@ -10,11 +10,13 @@
 
   prices = [ 0, 100, 350, 1000, 3500 ]
   stocks = [ 0, 10, 35, 100, 1000 ]
+  active = [ true, false, true, false, true ]
   5.times do |n|
     Product.create!(
       name: "書籍名#{n + 1}",
       description: "書籍の説明です。書籍の説明です。書籍の説明です。書籍の説明です。",
       price: prices[n],
-      stock: stocks[n]
+      stock: stocks[n],
+      active: active[n]
     )
   end
