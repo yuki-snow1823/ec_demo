@@ -1,5 +1,11 @@
 class Admin::ProductsController < ApplicationController
-  def new
+  before_action :authenticate_user!   # ログインチェック
+  before_action :check_admin          # admin: true か
+  def index
+    @products = Product.all
+  end
+
+    def new
   end
 
   def create
@@ -19,5 +25,13 @@ class Admin::ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :author, :price, :stock, :description, :active)
+  end
+  
+  private
+
+  def check_admin
+    unless current_user&.admin?
+      redirect_to root_path # トップページに戻す
+    end
   end
 end
