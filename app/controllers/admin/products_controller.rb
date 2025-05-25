@@ -1,4 +1,4 @@
-class ProductsController < ApplicationController
+class Admin::ProductsController < ApplicationController
   before_action :authenticate_user!   # ログインチェック
   before_action :check_admin          # admin: true か
   def index
