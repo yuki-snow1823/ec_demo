@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "products/index"
   devise_for :users, path: "admin/users", module: "admin/users", controllers: {
     sessions: "admin/users/sessions",
     registrations: "admin/users/registrations"
