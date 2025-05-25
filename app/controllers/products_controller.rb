@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.where("active = ?", true)
+    @products = Product.all
   end
 end

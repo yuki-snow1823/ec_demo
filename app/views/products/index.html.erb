@@ -8,16 +8,16 @@
         <th>説明</th>
         <th>価格</th>
         <th>在庫数</th>
-        <th>購入</th>
+        <th>公開情報</th>
     </thead>
     <tbody>
         <% @products.each do |product| %>
         <tr>
             <td><%= product.name %></td>
             <td><%= product.description %></td>
-            <td style="text-align: right;"><%= product.price %></td>
-            <td style="text-align: right;"><%= product.stock %></td>
-            <td>カートに入れるボタン予定</td>
+            <td style="text-align: right;"><%= product.price %> 円</td>
+            <td style="text-align: right;"><%= product.stock == 0 ? "在庫切れ" : "#{product.stock} 個" %></td>
+            <td style="text-align: center;"><%= product.active ? "公開" : "非公開" %></td>
         </tr>
         <% end %>
     </tbody>
