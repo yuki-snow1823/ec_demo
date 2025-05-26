@@ -8,5 +8,5 @@ class Product < ApplicationRecord
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :stock, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
-  validates :author, presence: true, length: {minimum:1, maximum:100}
+  validates :author, presence: true, length: { minimum: 1, maximum: 100 }
 end
