@@ -1,0 +1,24 @@
+<%= form_with model: Product.new do |f| %>
+    <b>名前</b><br>
+    <%= f.text_field :name %>
+    <br>
+
+    <b>著者</b><br>
+    <br>
+
+    <b>価格</b><br>
+    <%= f.text_field :price %>
+    <br>
+
+    <b>在庫数</b><br>
+    <%= f.text_field :stock %>
+    <br>
+
+    <b>紹介文</b><br>
+    <%= f.text_field :description %>
+    <br>
+
+    <b>公開情報</b><br>
+    active
+    <br>
+<% end %>
