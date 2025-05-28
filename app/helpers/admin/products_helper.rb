@@ -1,8 +1,4 @@
 module Admin::ProductsHelper
-  def formatted_price(product)
-    "#{product.price} 円"
-  end
-
   def formatted_stock(product)
     product.stock.zero? ? "在庫切れ" : "#{product.stock} 個"
   end

@@ -15,7 +15,7 @@
         <tr>
             <td><%= product.name %></td>
             <td><%= product.description %></td>
-            <td style="text-align: right;"><%= formatted_price(product) %></td>
+            <td style="text-align: right;"><%= product.price %> 円</td>
             <td style="text-align: right;"><%= formatted_stock(product) %></td>
             <td style="text-align: center;"><%= publication_status(product) %></td>
         </tr>
