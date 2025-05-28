@@ -1,14 +1,15 @@
 class Admin::ProductsController < ApplicationController
-  before_action :authenticate_user!   # ログインチェック
-  before_action :check_admin          # admin: true か
+  before_action :authenticate_user!
+  before_action :authorize_access_only_admin
+
   def index
     @products = Product.all
   end
   private
 
-  def check_admin
+  def authorize_access_only_admin
     unless current_user&.admin?
-      redirect_to root_path # トップページに戻す
+      redirect_to root_path
     end
   end
 end
