@@ -1,5 +1,5 @@
 <%= form_with model: Product.new do |f| %>
-    <b>名前</b><br>
+    <b>書名</b><br>
     <%= f.text_field :name %>
     <br>
 
@@ -19,7 +19,7 @@
     <%= f.text_area :description, rows: 4 %>
     <br>
 
-    <b>公開情報</b><br>
+    <b>公開状態</b><br>
     <%= f.label :active do %>
         <%= f.check_box :active %> 公開する
     <% end %>
