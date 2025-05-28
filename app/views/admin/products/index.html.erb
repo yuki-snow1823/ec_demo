@@ -15,9 +15,9 @@
         <tr>
             <td><%= product.name %></td>
             <td><%= product.description %></td>
-            <td style="text-align: right;"><%= product.price %> 円</td>
-            <td style="text-align: right;"><%= product.stock == 0 ? "在庫切れ" : "#{product.stock} 個" %></td>
-            <td style="text-align: center;"><%= product.active ? "公開" : "非公開" %></td>
+            <td style="text-align: right;"><%= formatted_price(product) %></td>
+            <td style="text-align: right;"><%= formatted_stock(product) %></td>
+            <td style="text-align: center;"><%= publication_status(product) %></td>
         </tr>
         <% end %>
     </tbody>
