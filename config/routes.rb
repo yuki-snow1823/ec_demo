@@ -8,8 +8,9 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }, as: "public_users"
 
-  get "products/new"
-  post "products"  => "products#create"
+  namespace :admin do
+    resources :products, only: [:new, :create]
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
