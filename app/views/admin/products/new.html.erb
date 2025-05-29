@@ -1,4 +1,4 @@
-<%= form_with model: Product.new do |f| %>
+<%= form_with model: [:admin, Product.new] do |f| %>
     <b>書名</b><br>
     <%= f.text_field :name %>
     <br>
