@@ -5,6 +5,7 @@ class Admin::ProductsController < ApplicationController
   def index
     @products = Product.all
   end
+
   private
 
   def authorize_access_only_admin
