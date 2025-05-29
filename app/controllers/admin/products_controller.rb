@@ -6,7 +6,7 @@ class Admin::ProductsController < ApplicationController
     @products = Product.all
   end
 
-    def new
+  def new
   end
 
   def create
