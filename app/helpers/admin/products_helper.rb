@@ -1,6 +1,7 @@
 module Admin::ProductsHelper
-  def formatted_stock(product)
-    product.stock.zero? ? "在庫切れ" : "#{product.stock} 個"
+  def stock_label(product)
+    return "在庫切れ" if product.stock.to_i <= 0
+    "#{product.stock} 個"
   end
 
   def publication_status(product)
