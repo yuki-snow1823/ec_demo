@@ -22,7 +22,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-    def edit
+  def edit
     @product = Product.find(params[:id])
   end
 
