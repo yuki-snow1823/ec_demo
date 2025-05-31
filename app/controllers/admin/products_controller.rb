@@ -15,6 +15,12 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def update
+    product = Product.find(params[:id])
+    product.update(product_params)
+    redirect_to root_path # 完成次第一覧画面や詳細画面に変更する？
+  end
+
   private
 
   def product_params
