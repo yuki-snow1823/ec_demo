@@ -17,8 +17,13 @@ class Admin::ProductsController < ApplicationController
 
   def update
     product = Product.find(params[:id])
-    product.update(product_params)
-    redirect_to root_path # // TODO: 完成次第一覧画面や詳細画面に変更する？
+    if product.update(product_params)
+      flash[:notice] = "編集に成功しました"
+      redirect_to root_path # // TODO: 完成次第一覧画面や詳細画面に変更する？
+    else
+    flash[:notice] = "編集に失敗しました"
+    render :edit
+    end
   end
 
   private
