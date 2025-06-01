@@ -27,6 +27,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
+<<<<<<< HEAD
     @product = Product.find(params[:id])
     if @product.update(product_params)
       flash[:notice] = "編集に成功しました"
@@ -35,6 +36,11 @@ class Admin::ProductsController < ApplicationController
       flash[:alert] = "編集に失敗しました"
       render :edit
     end
+=======
+    product = Product.find(params[:id])
+    product.update(product_params)
+    redirect_to root_path # // TODO: 完成次第一覧画面や詳細画面に変更する？
+>>>>>>> d61047f (コメントアウトに検索性向上のためtodoを追加)
   end
 
   private
