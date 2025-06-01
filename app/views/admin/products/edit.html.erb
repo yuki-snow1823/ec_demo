@@ -1,5 +1,5 @@
 <h1>編集画面</h1>
-<%= form_with model: @product, url: update_product_path(@product_id), method: :patch do |f| %>
+<%= form_with model: @product, url: admin_product_path(@product), method: :patch do |f| %>
   <b>書名</b><br>
   <%= f.text_field :name %>
   <br>
@@ -22,7 +22,7 @@
 
   <b>公開設定</b><br>
   <%= f.label :active do %>
-      <%= f.check_box :active %> 公開する
+    <%= f.check_box :active %> 公開する
   <% end %>
   <br>
 
