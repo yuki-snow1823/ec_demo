@@ -12,7 +12,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
-
+    product = Product.find(product_params)
   end
 
   private
