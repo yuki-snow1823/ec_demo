@@ -1,0 +1,24 @@
+<h1>Products#index</h1>
+<p>Find me in app/views/products/index.html.erb</p>
+
+<h1>書籍一覧(管理者用)</h1>
+<table border="1">
+    <thead>
+        <th>書籍名</th>
+        <th>説明</th>
+        <th>価格</th>
+        <th>在庫数</th>
+        <th>公開情報</th>
+    </thead>
+    <tbody>
+        <% @products.each do |product| %>
+        <tr>
+            <td><%= product.name %></td>
+            <td><%= product.description %></td>
+            <td style="text-align: right;"><%= product.price %> 円</td>
+            <td style="text-align: right;"><%= stock_label(product) %></td>
+            <td style="text-align: center;"><%= publication_status(product) %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
