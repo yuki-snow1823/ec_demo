@@ -6,11 +6,27 @@ class Admin::ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def new
+  end
+
+  def create
+    @product = Product.new(product_params)
+    if @product.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
   private
 
   def authorize_access_only_admin
     unless current_user&.admin?
       redirect_to root_path
     end
+  end
+
+  def product_params
+    params.require(:product).permit(:name, :author, :price, :stock, :description, :active)
   end
 end
