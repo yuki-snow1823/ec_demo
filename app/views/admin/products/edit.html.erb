@@ -1,3 +1,7 @@
+<div>
+  <%= flash[:alert] %>
+</div>
+
 <h1>編集画面</h1>
 <%= form_with model: @product, url: admin_product_path(@product), method: :patch do |f| %>
   <b>書名</b><br>
