@@ -29,3 +29,7 @@
 <b>公開設定</b><br>
 <%= @product.active %>
 </p>
+
+<%= link_to admin_products_path(@product.id) do %>
+  編集
+<% end %>
