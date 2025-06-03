@@ -18,6 +18,10 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
+  def show
+    @product = Product.find(params[:id])
+  end
+
   private
 
   def authorize_access_only_admin

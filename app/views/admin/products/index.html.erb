@@ -13,7 +13,11 @@
     <tbody>
         <% @products.each do |product| %>
         <tr>
-            <td><%= product.name %></td>
+            <td>
+                <%= link_to admin_product_path(product.id) do %>
+                    <%= product.name %>
+                <% end %>
+            </td>
             <td><%= product.description %></td>
             <td style="text-align: right;"><%= product.price %> 円</td>
             <td style="text-align: right;"><%= stock_label(product) %></td>
