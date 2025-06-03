@@ -6,5 +6,6 @@ RSpec.describe "Products", type: :request do
       get "/products/index"
       expect(response).to have_http_status(:success)
     end
+    pending "add some examples (or delete) #{__FILE__}"
   end
 end
