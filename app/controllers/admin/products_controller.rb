@@ -41,7 +41,7 @@ class Admin::ProductsController < ApplicationController
 
   def authorize_access_only_admin
     unless current_user&.admin?
-      redirect_to root_path
+      redirect_to root_path, alert: "管理者のみアクセス可能です"
     end
   end
 
