@@ -30,6 +30,7 @@
 <%= @product.active %>
 </p>
 
-<%= link_to admin_products_path(@product.id) do %>
-  編集
-<% end %>
+<%= link_to "編集", edit_admin_product_path(@product) %>
+<br>
+<%= link_to "一覧に戻る", admin_products_path %>
+
