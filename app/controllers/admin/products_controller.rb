@@ -33,11 +33,4 @@ class Admin::ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :author, :price, :stock, :description, :active)
   end
-
-
-  def authorize_access_only_admin
-    unless current_user&.admin?
-      redirect_to root_path
-    end
-  end
 end
