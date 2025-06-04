@@ -41,7 +41,7 @@ class Admin::ProductsController < ApplicationController
     product = Product.find(product_params)
     product.destroy
     flash[:notice] = "書籍を削除しました"
-    redirect_to root_path # // TODO: 完成次第一覧画面に変更する？
+    redirect_to admin_product_path(@product)
   end
 
   private
