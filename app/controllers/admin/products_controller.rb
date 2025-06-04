@@ -30,7 +30,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
     if @product.update(product_params)
       flash[:notice] = "編集に成功しました"
-      redirect_to admin_product_path
+      redirect_to admin_product_path(@product)
     else
       flash[:alert] = "編集に失敗しました"
       render :edit
