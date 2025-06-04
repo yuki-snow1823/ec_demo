@@ -32,5 +32,7 @@
 
 <%= link_to "編集", edit_admin_product_path(@product) %>
 <br>
+<%= link_to "削除", admin_product_path(@product), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
+<br>
 <%= link_to "一覧に戻る", admin_products_path %>
 

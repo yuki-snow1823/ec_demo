@@ -30,7 +30,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
     if @product.update(product_params)
       flash[:notice] = "編集に成功しました"
-      redirect_to admin_product_path(@product)
+      redirect_to admin_product_path
     else
       flash[:alert] = "編集に失敗しました"
       render :edit
@@ -38,10 +38,10 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
-    product = Product.find(product_params)
-    product.destroy
+    @product = Product.find(params[:id])
+    @product.destroy
     flash[:notice] = "書籍を削除しました"
-    redirect_to admin_product_path(@product)
+    redirect_to admin_products_path
   end
 
   private
