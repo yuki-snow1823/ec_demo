@@ -1,0 +1,36 @@
+<h1>詳細画面(管理者用)</h1>
+
+<p>
+<b>書籍名</b><br>
+<%= @product.name %>
+</p>
+
+<p>
+<b>著者</b><br>
+<%= @product.author %>
+</p>
+
+<p>
+<b>価格</b><br>
+<%= @product.price %>
+</p>
+
+<p>
+<b>在庫数</b><br>
+<%= @product.stock %>
+</p>
+
+<p>
+<b>紹介文</b><br>
+<%= @product.description %>
+</p>
+
+<p>
+<b>公開設定</b><br>
+<%= @product.active %>
+</p>
+
+<%= link_to "編集", edit_admin_product_path(@product) %>
+<br>
+<%= link_to "一覧に戻る", admin_products_path %>
+

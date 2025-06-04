@@ -3,13 +3,14 @@ Rails.application.routes.draw do
     sessions: "admin/users/sessions",
     registrations: "admin/users/registrations"
   }
+
   devise_for :users, path: "users", controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations"
   }, as: "public_users"
 
   namespace :admin do
-    resources :products, only: [ :new, :create, :destroy ]
+    resources :products, only: [ :new, :create, :show, :edit, :update, :index, :destroy ]
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
