@@ -1,4 +1,4 @@
-<h1>詳細画面</h1>
+<h1>詳細画面(管理者用)</h1>
 
 <p>
 <b>書籍名</b><br>
@@ -29,3 +29,8 @@
 <b>公開設定</b><br>
 <%= @product.active %>
 </p>
+
+<%= link_to "編集", edit_admin_product_path(@product) %>
+<br>
+<%= link_to "一覧に戻る", admin_products_path %>
+

@@ -22,11 +22,26 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      flash[:notice] = "編集に成功しました"
+      redirect_to admin_product_path(@product)
+    else
+      flash[:alert] = "編集に失敗しました"
+      render :edit
+    end
+  end
+
   private
 
   def authorize_access_only_admin
     unless current_user&.admin?
-      redirect_to root_path
+      redirect_to root_path, alert: "管理者のみアクセス可能です"
     end
   end
 
