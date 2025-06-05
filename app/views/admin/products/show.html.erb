@@ -1,5 +1,11 @@
 <h1>詳細画面(管理者用)</h1>
 
+<% if flash[:notice] %>
+  <div class="alert alert-success">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <p>
 <b>書籍名</b><br>
 <%= @product.name %>
