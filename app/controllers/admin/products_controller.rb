@@ -38,7 +38,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
-    begin 
+    begin
       @product = Product.find(params[:id])
       if @product.destroy
         flash[:notice] = "書籍を削除しました"
