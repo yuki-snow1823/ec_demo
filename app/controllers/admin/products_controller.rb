@@ -38,18 +38,17 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
-    begin
-      @product = Product.find(params[:id])
+    @product = Product.find_by(id: params[:id])
+    if @product
       if @product.destroy
         flash[:notice] = "書籍を削除しました"
       else
         flash[:alert] = "削除に失敗しました"
       end
-      redirect_to admin_products_path
-    rescue ActiveRecord::RecordNotFound
-      flash[:alert] = "書籍が既に削除されています"
-      redirect_to admin_products_path
+    else
+      flash[:alert] = "書籍が見つかりませんでした"
     end
+    redirect_to admin_products_path
   end
 
   private
