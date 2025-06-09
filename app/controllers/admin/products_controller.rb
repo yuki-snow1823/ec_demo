@@ -12,6 +12,7 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
+      flash[:notice] = "書籍を登録しました"
       redirect_to admin_product_path(@product)
     else
       render :new
