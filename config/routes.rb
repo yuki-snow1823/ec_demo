@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   }, as: "public_users"
 
   namespace :admin do
-    resources :products, only: [ :new, :create, :show, :edit, :update, :index ]
+    resources :products, only: [ :new, :create, :show, :edit, :update, :index, :destroy ]
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
