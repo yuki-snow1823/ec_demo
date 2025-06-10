@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      product:
+        name: 書籍名
+        author: 著者
+        price: 価格
+        stock: 在庫数
