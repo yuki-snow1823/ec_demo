@@ -21,3 +21,10 @@
   background-color: #dff0d8;
   border-color: #d6e9c6;
 }
+
+.error-message {
+  background:#FFEBE8;
+  border:2px solid #990000;
+  padding:12px; 
+  width: 500px;
+}
