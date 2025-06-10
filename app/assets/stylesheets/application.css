@@ -25,6 +25,7 @@
 .error-message {
   background:#FFEBE8;
   border:2px solid #990000;
-  padding:12px; 
+  padding:1px; 
   width: 500px;
+  margin-bottom: 10px;
 }

@@ -38,5 +38,8 @@ module EcSite
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # エラーメッセージの日本語設定のため追加
+    config.i18n.default_locale = :ja
   end
 end
