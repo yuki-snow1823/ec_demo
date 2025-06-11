@@ -3,7 +3,7 @@
 </div>
 
 <h1>編集画面(管理者用)</h1>
-<%= form_with(model: @product, url: admin_product_path(@product), scope: :product, data: { turbo: false }) do |f| %>
+<%= form_with(model: @product, url: admin_product_path(@product), data: { turbo: false }) do |f| %>
   <%= render "layouts/error_messages", model: f.object %>
 
   <b>書籍名</b><br>
@@ -22,7 +22,7 @@
   <%= f.text_field :stock %>
   <br>
 
-  <b>紹介文</b><br>
+  <b>説明</b><br>
   <%= f.text_area :description, rows: 4 %>
   <br>
 
