@@ -1,5 +1,11 @@
 <h2>ログイン(管理者用)</h2>
 
+<% if flash[:alert] %>
+  <div class="alert alert-error">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
