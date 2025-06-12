@@ -24,4 +24,23 @@ class Admin::Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def create
+    self.resource = warden.authenticate(auth_options)
+
+    if resource.nil?
+      flash[:alert] = "メールアドレスまたはパスワードが正しくありません"
+      redirect_to new_user_session_path and return
+    end
+
+    unless resource.admin?
+      sign_out resource
+      flash[:alert] = "管理者以外はこの画面からログインできません"
+      redirect_to new_user_session_path and return
+    end
+
+    set_flash_message!(:notice, :signed_in)
+    sign_in(resource_name, resource)
+    redirect_to admin_products_path
+  end
 end
