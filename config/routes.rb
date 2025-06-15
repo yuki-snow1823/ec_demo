@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :users do
-    get "products/index"
-  end
   devise_for :users, path: "admin/users", module: "admin/users", controllers: {
     sessions: "admin/users/sessions",
     registrations: "admin/users/registrations"
