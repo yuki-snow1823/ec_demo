@@ -35,7 +35,6 @@ class Admin::Users::SessionsController < Devise::SessionsController
 
     unless resource.admin?
       sign_out resource
-      flash[:alert] = "管理者以外はこの画面からログインできません"
       redirect_to new_user_session_path and return
     end
 
