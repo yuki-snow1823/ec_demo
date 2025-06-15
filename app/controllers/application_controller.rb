@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     if resource.admin?
       admin_products_path
     else
-      root_path
+      users_products_path
     end
   end
 
