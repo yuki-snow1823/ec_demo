@@ -12,13 +12,6 @@
         <th>在庫数</th>
     </thead>
     <tbody>
-        <% @products.each do |product| %>
-        <tr>
-            <td><%= product.name %></td>
-            <td><%= product.author %></td>
-            <td style="text-align: right;"><%= product.price %> 円</td>
-            <td style="text-align: right;"><%= stock_label(product) %></td>
-        </tr>
-        <% end %>
+        <%= render partial: "product", collection: @products %>
     </tbody>
 </table>
