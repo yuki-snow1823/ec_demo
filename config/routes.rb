@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :users do
-    get "products/index"
-  end
   devise_for :users, path: "admin/users", module: "admin/users", controllers: {
     sessions: "admin/users/sessions",
     registrations: "admin/users/registrations"
@@ -14,6 +11,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :products, only: [ :new, :create, :show, :edit, :update, :index, :destroy ]
+  end
+
+  namespace :users do
+    resources :products, only: [ :index ]
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
