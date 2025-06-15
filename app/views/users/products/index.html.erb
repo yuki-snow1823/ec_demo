@@ -1,5 +1,9 @@
 <h1>書籍一覧(ユーザー用)</h1>
 
+<p>
+    <%= link_to 'ログアウト', destroy_public_users_user_session_path, data: { turbo_method: :delete } %>
+</p>
+
 <table border="1">
     <thead>
         <th>書籍名</th>
