@@ -30,10 +30,20 @@ class Users::SessionsController < Devise::SessionsController
 
     if user&.admin?
       flash[:alert] = "認証できませんでした"
-      redirect_to public_users_user_session_path and return
-    elsif !user&.valid_password?(form_params[:password])
+      redirect_to public_users_user_session_path 
+      return
+    end
+    
+    if user == nil
       flash[:alert] = "メールアドレスまたはパスワードが正しくありません"
-      redirect_to public_users_user_session_path and return
+      redirect_to public_users_user_session_path 
+      return
+    end
+
+    unless user.valid_password?(form_params[:password])
+      flash[:alert] = "メールアドレスまたはパスワードが正しくありません"
+      redirect_to public_users_user_session_path 
+      return
     end
 
     self.resource = user
