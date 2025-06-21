@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
 
   namespace :users do
-    resources :products, only: [ :index ]
+    resources :products, only: [ :index, :show ]
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
