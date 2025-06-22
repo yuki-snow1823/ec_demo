@@ -28,13 +28,13 @@ class Users::SessionsController < Devise::SessionsController
     form_params = params[:public_users_user]
     user = User.find_by(email: form_params[:email])
 
-    if user == nil
+    if user.nil?
       flash[:alert] = "メールアドレスまたはパスワードが正しくありません"
       redirect_to public_users_user_session_path
       return
     end
 
-    if user.admin == true
+    if user.admin?
       flash[:alert] = "認証できませんでした"
       redirect_to public_users_user_session_path
       return
