@@ -24,4 +24,31 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  def create
+    form_params = params[:public_users_user]
+    user = User.find_by(email: form_params[:email])
+
+    if user.nil?
+      flash[:alert] = "メールアドレスまたはパスワードが正しくありません"
+      redirect_to public_users_user_session_path
+      return
+    end
+
+    if user.admin?
+      flash[:alert] = "認証できませんでした"
+      redirect_to public_users_user_session_path
+      return
+    end
+
+    unless user.valid_password?(form_params[:password])
+      flash[:alert] = "メールアドレスまたはパスワードが正しくありません"
+      redirect_to public_users_user_session_path
+      return
+    end
+
+    self.resource = user
+    set_flash_message!(:notice, :signed_in)
+    sign_in(resource_name, resource)
+    redirect_to users_products_path
+  end
 end
