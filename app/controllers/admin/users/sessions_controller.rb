@@ -30,7 +30,7 @@ class Admin::Users::SessionsController < Devise::SessionsController
 
     if resource.nil?
       flash[:alert] = "メールアドレスまたはパスワードが正しくありません"
-      redirect_to new_user_session_path 
+      redirect_to new_user_session_path
       return
     end
 
