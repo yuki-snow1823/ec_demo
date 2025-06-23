@@ -30,13 +30,15 @@ class Admin::Users::SessionsController < Devise::SessionsController
 
     if resource.nil?
       flash[:alert] = "メールアドレスまたはパスワードが正しくありません"
-      redirect_to new_user_session_path and return
+      redirect_to new_user_session_path 
+      return
     end
 
     unless resource.admin?
       flash[:alert] = "認証できませんでした"
       sign_out resource
-      redirect_to new_user_session_path and return
+      redirect_to new_user_session_path
+      return
     end
 
     set_flash_message!(:notice, :signed_in)
