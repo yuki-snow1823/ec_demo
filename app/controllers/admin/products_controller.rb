@@ -2,6 +2,9 @@ class Admin::ProductsController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_access_only_admin
 
+  # 共通の在庫表示ヘルパーを明示的に読み込み
+  helper ProductsHelper
+
   def index
     @products = Product.all
   end
