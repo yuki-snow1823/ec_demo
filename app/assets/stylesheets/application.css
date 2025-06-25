@@ -14,12 +14,19 @@
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px;
+  width: 500px;
 }
 
 .alert-success {
   color: #3c763d;
   background-color: #dff0d8;
   border-color: #d6e9c6;
+}
+
+.alert-error {
+  color: #990000;
+  background-color: #FFEBE8;
+  border-color: #f5c6cb;
 }
 
 .error-message {
