@@ -59,6 +59,8 @@ group :development, :test do
   # Factory Bot for test data
   gem "factory_bot_rails"
   gem "capybara"
+  gem "selenium-webdriver"
+  gem "faker"
 end
 
 group :development do
