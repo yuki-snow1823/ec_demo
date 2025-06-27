@@ -16,4 +16,3 @@ describe "ユーザーモデルについて" do
     end
   end
 end
-
