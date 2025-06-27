@@ -58,6 +58,7 @@ group :development, :test do
   gem "rspec-rails"
   # Factory Bot for test data
   gem "factory_bot_rails"
+  gem "capybara"
 end
 
 group :development do
