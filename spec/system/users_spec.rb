@@ -22,7 +22,8 @@ RSpec.describe "Users", type: :system do
       fill_in "Password", with: user.password
       click_button "Log in"
 
-      expect(page).to have_content "認証できませんでした"
+      expect(page).to have_current_path(new_user_session_path)
+      expect(page).to have_content("認証できませんでした")
     end
   end
 
