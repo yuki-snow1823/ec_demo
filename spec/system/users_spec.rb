@@ -46,5 +46,4 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_content "認証できませんでした"
     end
   end
-  
 end
