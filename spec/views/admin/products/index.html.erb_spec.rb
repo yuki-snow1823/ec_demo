@@ -47,11 +47,11 @@ RSpec.describe "admin/products/index", type: :view do
     # アクティブ状態の表示を確認
     active_books = books.select(&:active)
     inactive_books = books.reject(&:active)
-    
+
     active_books.each do |book|
       expect(rendered).to include(book.name)
     end
-    
+
     inactive_books.each do |book|
       expect(rendered).to include(book.name)
     end

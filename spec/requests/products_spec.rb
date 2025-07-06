@@ -164,19 +164,19 @@ RSpec.describe "Products", type: :request do
       # 書籍一覧ページにアクセス
       get products_path
       expect(response).to have_http_status(:success)
-      
+
       # プログラミング書籍が表示されることを確認
       programming_books.each do |book|
         expect(response.body).to include(book.name)
         expect(response.body).to include(book.author)
       end
-      
+
       # 小説も表示されることを確認
       novels.each do |book|
         expect(response.body).to include(book.name)
         expect(response.body).to include(book.author)
       end
-      
+
       # 非アクティブな書籍は表示されないことを確認
       inactive_books.each do |book|
         expect(response.body).not_to include(book.name)
@@ -196,13 +196,13 @@ RSpec.describe "Products", type: :request do
 
     it "shows books with different characteristics" do
       get products_path
-      
+
       # 異なる価格帯の書籍が表示される
       expect(response.body).to include("2500")
       expect(response.body).to include("3500")
       expect(response.body).to include("1200")
       expect(response.body).to include("1800")
-      
+
       # 異なる著者の書籍が表示される
       expect(response.body).to include("Ruby太郎")
       expect(response.body).to include("Rails花子")
@@ -223,7 +223,7 @@ RSpec.describe "Products", type: :request do
       start_time = Time.current
       get products_path
       end_time = Time.current
-      
+
       expect(response).to have_http_status(:success)
       expect(end_time - start_time).to be < 5.0 # 5秒以内で応答
     end
@@ -239,7 +239,7 @@ RSpec.describe "Products", type: :request do
     it "gracefully handles database errors" do
       # データベースエラーをシミュレート
       allow(Product).to receive(:where).and_raise(ActiveRecord::ConnectionNotEstablished)
-      
+
       expect {
         get products_path
       }.to raise_error(ActiveRecord::ConnectionNotEstablished)
