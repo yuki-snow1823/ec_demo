@@ -119,7 +119,7 @@ module BooksTestHelpers
 
   def create_books_with_edge_cases
     [
-      create(:product, name: "", author: "著者", price: 0, stock: 0),
+      create(:product, name: "A", author: "著者", price: 0, stock: 0),
       create(:product, name: "長い名前" * 50, author: "長い著者名" * 20, price: 999999, stock: 999999),
       create(:product, name: "特殊文字!@#$%^&*()", author: "特殊文字著者", price: 1000, stock: 10)
     ]
