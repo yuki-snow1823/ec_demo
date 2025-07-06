@@ -12,7 +12,7 @@ RSpec.describe "Books", type: :system do
     context "as anonymous user" do
       it "can browse available books" do
         visit products_path
-        
+
         expect(page).to have_content("書籍一覧(ユーザー用)")
         expect(page).to have_content(programming_book.name)
         expect(page).to have_content(programming_book.author)
@@ -24,7 +24,7 @@ RSpec.describe "Books", type: :system do
       it "can view book details" do
         visit products_path
         click_link programming_book.name
-        
+
         expect(page).to have_content(programming_book.name)
         expect(page).to have_content(programming_book.author)
         expect(page).to have_content(programming_book.description)
@@ -34,7 +34,7 @@ RSpec.describe "Books", type: :system do
 
       it "sees book information in structured format" do
         visit products_path
-        
+
         expect(page).to have_css("th", text: "書籍名")
         expect(page).to have_css("th", text: "著者")
         expect(page).to have_css("th", text: "価格")
@@ -47,7 +47,7 @@ RSpec.describe "Books", type: :system do
 
       it "can browse available books" do
         visit products_path
-        
+
         expect(page).to have_content("書籍一覧(ユーザー用)")
         expect(page).to have_content(programming_book.name)
         expect(page).to have_content(novel.name)
@@ -56,7 +56,7 @@ RSpec.describe "Books", type: :system do
 
       it "can view book details" do
         visit product_path(programming_book)
-        
+
         expect(page).to have_content(programming_book.name)
         expect(page).to have_content(programming_book.author)
         expect(page).to have_content(programming_book.description)
@@ -64,7 +64,7 @@ RSpec.describe "Books", type: :system do
 
       it "cannot access admin book management" do
         visit admin_products_path
-        
+
         expect(page).to have_content("管理者のみアクセス可能です")
         expect(current_path).to eq(root_path)
       end
@@ -80,7 +80,7 @@ RSpec.describe "Books", type: :system do
 
       it "can view all books in admin panel" do
         visit admin_products_path
-        
+
         expect(page).to have_content("書籍一覧(管理者用)")
         expect(page).to have_content(active_book.name)
         expect(page).to have_content(inactive_book.name)
@@ -88,7 +88,7 @@ RSpec.describe "Books", type: :system do
 
       it "can view book details" do
         visit admin_product_path(active_book)
-        
+
         expect(page).to have_content(active_book.name)
         expect(page).to have_content(active_book.author)
         expect(page).to have_content(active_book.description)
@@ -100,9 +100,9 @@ RSpec.describe "Books", type: :system do
       it "can create a new book" do
         visit admin_products_path
         click_link "書籍新規登録"
-        
+
         expect(page).to have_content("書籍新規投稿画面(管理者用)")
-        
+
         fill_in "書籍名", with: "新しい書籍"
         fill_in "著者", with: "新しい著者"
         fill_in "価格", with: "2500"
@@ -110,7 +110,7 @@ RSpec.describe "Books", type: :system do
         fill_in "説明", with: "新しい書籍の説明です"
         check "アクティブ"
         click_button "登録する"
-        
+
         expect(page).to have_content("書籍を登録しました")
         expect(page).to have_content("新しい書籍")
         expect(page).to have_content("新しい著者")
@@ -118,12 +118,12 @@ RSpec.describe "Books", type: :system do
 
       it "shows validation errors when creating invalid book" do
         visit new_admin_product_path
-        
+
         fill_in "書籍名", with: ""
         fill_in "著者", with: ""
         fill_in "価格", with: "-100"
         click_button "登録する"
-        
+
         expect(page).to have_content("書籍新規投稿画面(管理者用)")
         # バリデーションエラーが表示されることを確認
       end
@@ -135,12 +135,12 @@ RSpec.describe "Books", type: :system do
       it "can edit existing book" do
         visit admin_product_path(book)
         click_link "編集"
-        
+
         fill_in "書籍名", with: "編集された書籍名"
         fill_in "著者", with: "編集された著者"
         fill_in "価格", with: "4000"
         click_button "更新する"
-        
+
         expect(page).to have_content("編集に成功しました")
         expect(page).to have_content("編集された書籍名")
         expect(page).to have_content("編集された著者")
@@ -148,11 +148,11 @@ RSpec.describe "Books", type: :system do
 
       it "shows validation errors when editing with invalid data" do
         visit edit_admin_product_path(book)
-        
+
         fill_in "書籍名", with: ""
         fill_in "著者", with: ""
         click_button "更新する"
-        
+
         expect(page).to have_content("編集に失敗しました")
       end
     end
@@ -163,7 +163,7 @@ RSpec.describe "Books", type: :system do
       it "can delete a book" do
         visit admin_product_path(book)
         click_link "削除"
-        
+
         expect(page).to have_content("書籍を削除しました")
         expect(page).not_to have_content("削除対象書籍")
       end
@@ -182,7 +182,7 @@ RSpec.describe "Books", type: :system do
 
     it "allows browsing multiple books" do
       visit products_path
-      
+
       expect(page).to have_content("プログラミング入門")
       expect(page).to have_content("Web開発実践")
       expect(page).to have_content("データベース設計")
@@ -192,7 +192,7 @@ RSpec.describe "Books", type: :system do
     it "shows book details when clicked" do
       visit products_path
       click_link "プログラミング入門"
-      
+
       expect(page).to have_content("プログラミング入門")
       expect(page).to have_content("コード太郎")
       expect(page).to have_content("2800")
@@ -202,7 +202,7 @@ RSpec.describe "Books", type: :system do
       visit products_path
       click_link "プログラミング入門"
       expect(page).to have_content("プログラミング入門")
-      
+
       # 戻るボタンやリンクがあれば確認
       # visit products_path
       # expect(page).to have_content("書籍一覧(ユーザー用)")
@@ -216,7 +216,7 @@ RSpec.describe "Books", type: :system do
 
     it "displays books with different price ranges" do
       visit products_path
-      
+
       expect(page).to have_content("無料書籍")
       expect(page).to have_content("0") # 無料
       expect(page).to have_content("高額書籍")
@@ -227,7 +227,7 @@ RSpec.describe "Books", type: :system do
 
     it "shows all active books regardless of stock status" do
       visit products_path
-      
+
       expect(page).to have_content("無料書籍")
       expect(page).to have_content("高額書籍")
       expect(page).to have_content("在庫切れ書籍")
@@ -237,7 +237,7 @@ RSpec.describe "Books", type: :system do
   describe "Error handling" do
     it "handles non-existent book gracefully" do
       visit product_path(id: 999999)
-      
+
       expect(page).to have_content("見つかりません") # または適切なエラーメッセージ
     end
 
@@ -253,7 +253,7 @@ RSpec.describe "Books", type: :system do
     it "displays properly on mobile devices", :js do
       # モバイルサイズでの表示確認
       page.driver.browser.manage.window.resize_to(375, 667)
-      
+
       visit products_path
       expect(page).to have_content("書籍一覧(ユーザー用)")
     end
@@ -271,7 +271,7 @@ RSpec.describe "Books", type: :system do
       start_time = Time.current
       visit products_path
       end_time = Time.current
-      
+
       expect(page).to have_content("書籍一覧(ユーザー用)")
       expect(end_time - start_time).to be < 10.0 # 10秒以内で表示
     end

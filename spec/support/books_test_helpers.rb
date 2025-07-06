@@ -26,12 +26,12 @@ module BooksTestHelpers
 
   def expect_book_list_page_content(books_to_include: [], books_to_exclude: [])
     expect(page).to have_content("書籍一覧")
-    
+
     books_to_include.each do |book|
       expect(page).to have_content(book.name)
       expect(page).to have_content(book.author)
     end
-    
+
     books_to_exclude.each do |book|
       expect(page).not_to have_content(book.name)
     end
@@ -63,15 +63,15 @@ module BooksTestHelpers
       stock: "50",
       description: "テスト説明"
     }
-    
+
     attrs = default_attributes.merge(attributes)
-    
+
     fill_in "書籍名", with: attrs[:name]
     fill_in "著者", with: attrs[:author]
     fill_in "価格", with: attrs[:price]
     fill_in "在庫", with: attrs[:stock]
     fill_in "説明", with: attrs[:description]
-    
+
     if attrs[:active]
       check "アクティブ"
     elsif attrs[:active] == false
@@ -108,12 +108,12 @@ module BooksTestHelpers
       create(:product, name: "アクティブ書籍1", active: true),
       create(:product, name: "アクティブ書籍2", active: true)
     ]
-    
+
     inactive_books = [
       create(:product, name: "非アクティブ書籍1", active: false),
       create(:product, name: "非アクティブ書籍2", active: false)
     ]
-    
+
     { active: active_books, inactive: inactive_books }
   end
 
@@ -135,7 +135,7 @@ module BooksTestHelpers
 
   def create_many_books(count = 50)
     count.times do |i|
-      create(:product, 
+      create(:product,
         name: "書籍#{i}",
         author: "著者#{i}",
         price: (i + 1) * 100,

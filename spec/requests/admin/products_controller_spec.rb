@@ -17,9 +17,9 @@ RSpec.describe Admin::ProductsController, type: :request do
       it "displays all products" do
         active_product = create(:product, name: "アクティブ書籍")
         inactive_product = create(:product, :inactive, name: "非アクティブ書籍")
-        
+
         get admin_products_path
-        
+
         expect(response.body).to include("アクティブ書籍")
         expect(response.body).to include("非アクティブ書籍")
       end
@@ -342,7 +342,7 @@ RSpec.describe Admin::ProductsController, type: :request do
         active: true,
         author: "A" * 100
       }
-      
+
       post admin_products_path, params: { product: attributes }
       expect(response).to redirect_to(admin_product_path(Product.last))
     end
